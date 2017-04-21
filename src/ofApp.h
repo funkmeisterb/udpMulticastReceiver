@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 #include "ofxNetwork.h"
+#include "ofThreadedUDPReceiver.h"
 
 class appSettings {
 	public:
@@ -34,6 +35,5 @@ class ofApp : public ofBaseApp{
 		void saveSettings();
 
 		appSettings				settings;
-		ofxUDPManager			udpConnection;
-		string					sLastMessage;
+		ofThreadedUDPReceiver	threadUDP;
 };

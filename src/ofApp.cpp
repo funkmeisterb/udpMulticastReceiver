@@ -3,16 +3,12 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	loadSettings();
-	udpConnection.Create();
-	char* pChars = &settings.sAddress[0];
-	udpConnection.BindMcast(pChars, settings.nPort);
+	threadUDP.setup(settings.sAddress, settings.nPort);
+	threadUDP.startThread();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	char udpMessage[1000];
-	udpConnection.Receive(udpMessage, 1000);
-	sLastMessage = udpMessage;
 }
 
 //--------------------------------------------------------------
@@ -21,7 +17,7 @@ void ofApp::draw(){
 	ofSetColor(ofColor::yellow);
 	ofDrawBitmapString("UDP multicast receiver, on port " + ofToString(settings.nPort), 20, 20);
 	ofDrawBitmapString("Last UDP multicast message:", 20, 60);
-	ofDrawBitmapString(sLastMessage, 20, 80);
+	ofDrawBitmapString(threadUDP.getLastMessage(), 20, 80);
 
 }
 
