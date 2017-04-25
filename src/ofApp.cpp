@@ -15,7 +15,7 @@ void ofApp::update(){
 void ofApp::draw(){
 	ofSetBackgroundColor(ofColor::black);
 	ofSetColor(ofColor::yellow);
-	ofDrawBitmapString("UDP multicast receiver, on port " + ofToString(settings.nPort), 20, 20);
+	ofDrawBitmapString("UDP multicast receiver, on address " + settings.sAddress + " and port " + ofToString(settings.nPort), 20, 20);
 	ofDrawBitmapString("Last UDP multicast message:", 20, 60);
 	ofDrawBitmapString(threadUDP.getLastMessage(), 20, 80);
 }
